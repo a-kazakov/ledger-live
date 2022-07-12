@@ -6,9 +6,11 @@ import defaultTheme from "./theme";
 import palettes from "./palettes";
 import type { Theme } from "./theme";
 
-import { GlobalStyle } from "@ledgerhq/react-ui/styles";
-
-import { defaultTheme as V3dDfaultTheme, palettes as V3Palettes } from "@ledgerhq/react-ui/styles";
+import {
+  GlobalStyle,
+  defaultTheme as V3dDfaultTheme,
+  palettes as V3Palettes,
+} from "@ledgerhq/react-ui/styles/index";
 
 type Props = {
   children: React.ReactNode;
