@@ -42,14 +42,17 @@ const StyleProviderV3 = ({ children, selectedPalette }: Props) => {
   );
 };
 
-export const withV3StyleProvider = (WrappedComponent: React.ComponentType) => ({ props }) => {
-  const theme = useTheme();
+export const withV3StyleProvider = (Component: React.ComponentType) => {
+  const WrappedComponent = props => {
+    const theme = useTheme();
 
-  return (
-    <StyleProviderV3 selectedPalette={theme.colors.type}>
-      <WrappedComponent {...props} />
-    </StyleProviderV3>
-  );
+    return (
+      <StyleProviderV3 selectedPalette={theme.colors.type}>
+        <Component {...props} />
+      </StyleProviderV3>
+    );
+  };
+  return WrappedComponent;
 };
 
 export default StyleProviderV3;
