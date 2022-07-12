@@ -1,10 +1,8 @@
 import "@ledgerhq/react-ui/assets/fonts";
 import React, { useMemo } from "react";
-import { ThemeProvider, useTheme } from "styled-components";
-import type { StyledComponent } from "styled-components";
-import defaultTheme from "./theme";
+import { StyledComponent, ThemeProvider, useTheme } from "styled-components";
+import defaultTheme, { Theme } from "./theme";
 import palettes from "./palettes";
-import type { Theme } from "./theme";
 
 import {
   GlobalStyle,
@@ -20,20 +18,20 @@ type Props = {
 export type ThemedComponent<T> = StyledComponent<T, Theme, any>;
 
 const StyleProviderV3 = ({ children, selectedPalette }: Props) => {
-    const palettesAny: any = palettes;
-    const v3SelectedPalettes = selectedPalette === "light" ? "light" : "dark";
-    const theme: Theme = useMemo(
-      () => ({
-        ...defaultTheme,
-        ...V3dDfaultTheme,
-        colors: {
-          ...defaultTheme.colors,
-          ...V3Palettes[v3SelectedPalettes],
-          palette: { ...palettesAny[v3SelectedPalettes], ...V3Palettes[v3SelectedPalettes] },
-        },
-        theme: v3SelectedPalettes,
-      }),
-      [palettesAny, v3SelectedPalettes],
+  const palettesAny: any = palettes;
+  const v3SelectedPalettes = selectedPalette === "light" ? "light" : "dark";
+  const theme: Theme = useMemo(
+    () => ({
+      ...defaultTheme,
+      ...V3dDfaultTheme,
+      colors: {
+        ...defaultTheme.colors,
+        ...V3Palettes[v3SelectedPalettes],
+        palette: { ...palettesAny[v3SelectedPalettes], ...V3Palettes[v3SelectedPalettes] },
+      },
+      theme: v3SelectedPalettes,
+    }),
+    [palettesAny, v3SelectedPalettes],
   );
 
   return (
