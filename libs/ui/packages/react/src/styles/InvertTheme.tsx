@@ -2,8 +2,7 @@ import React, { useMemo } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 import { defaultTheme } from ".";
 import { palettes } from "@ledgerhq/ui-shared";
-import { Theme } from "./theme";
-import { defaultTheme as V3dDfaultTheme, palettes as V3Palettes } from "@ledgerhq/react-ui/styles";
+import V3dDfaultTheme, { Theme } from "./theme";
 
 export type Props = {
   if?: boolean;
@@ -37,8 +36,8 @@ export const InvertThemeV3 = ({ children }: any): React.ReactElement => {
       ...V3dDfaultTheme,
       colors: {
         ...defaultTheme.colors,
-        ...V3Palettes[v3RevertTheme],
-        palette: { ...palettes[v3RevertTheme], ...V3Palettes[v3RevertTheme] },
+        ...palettes[v3RevertTheme],
+        palette: palettes[v3RevertTheme],
       },
       theme: v3RevertTheme,
     }),
